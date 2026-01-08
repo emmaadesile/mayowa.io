@@ -5,7 +5,17 @@
  */
 
 :root {
-	--accent: #2337ff;
+	color-scheme: light dark;
+
+	--light-bg: hsl(240, 100%, 99%);
+  --light-color: hsl(210deg 15% 6%);
+  --light-code: hsl(9, 100%, 64%);
+
+	--dark-bg: hsl(210deg 15% 6%);
+  --dark-color: hsl(224, 6%, 77%);
+  --dark-code: hsl(51, 100%, 50%);
+
+	--accent: #d87a3c;
 	--accent-dark: #000d8a;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
@@ -30,16 +40,17 @@
 	font-display: swap;
 }
 body {
+	background-color: light-dark(var(--light-bg), var(--dark-bg));
+  color: light-dark(var(--light-color), var(--dark-color));
+
 	font-family: 'Atkinson', sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
 	background-size: 100% 600px;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 1.7;
 }
 main {
@@ -61,7 +72,6 @@ h4,
 h5,
 h6 {
 	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
 	line-height: 1.2;
 }
 h1 {
@@ -84,11 +94,12 @@ b {
 	font-weight: 700;
 }
 a {
-	color: var(--accent);
+	color: light-dark(var(--light-color), var(--dark-color));
 }
 a:hover {
 	color: var(--accent);
 }
+
 p {
 	margin-bottom: 1em;
 }
@@ -110,11 +121,13 @@ img {
 	height: auto;
 	border-radius: 8px;
 }
+
 code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
+	padding: 2px;
 	border-radius: 2px;
+  color: light-dark(var(--light-code), var(--dark-code));
 }
+
 pre {
 	padding: 1.5em;
 	border-radius: 8px;

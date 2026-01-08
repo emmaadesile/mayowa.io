@@ -1,6 +1,7 @@
 import { tinaField, useTina } from "tinacms/dist/react";
 import type { PageQuery, PageQueryVariables } from "../__generated__/types";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import type { CollectionEntry } from "astro:content";
 
 type Props = {
 	variables: PageQueryVariables;
@@ -8,7 +9,7 @@ type Props = {
 	query: string;
 }
 
-const HomePage = (props: Props) => {
+const HomePage = (props: Props & { posts: CollectionEntry<'blog'>[] }) => {
 	const { data } = useTina({
 		query: props.query,
 		variables: props.variables,
@@ -16,7 +17,6 @@ const HomePage = (props: Props) => {
 	})
 
 	const page = data.page;
-
 
 	return (
 		<main>
